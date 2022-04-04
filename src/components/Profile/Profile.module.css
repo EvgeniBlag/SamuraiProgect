@@ -1,0 +1,13 @@
+.profile img {
+    width: 1100px;
+    height: 400px;
+  }
+  
+  .profile{
+   grid-area: content;
+  background-color: yellowgreen;
+  }
+
+  .item {
+    color: black;
+  }
