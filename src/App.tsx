@@ -4,6 +4,7 @@ import Profile from './components/Profile/Profile';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import React,{useState} from 'react';
+import NewComponents from './NewComponents';
 
 
 type FilterPropsType='All'|'Dollars'|'Rubls'
@@ -42,28 +43,8 @@ function App(){
   }
  
     return (
-    <>
-  <ul>
-    { currentMoney.map((objFromMoneyArr,index)=>{
-       return(
-         <li key={index}>
-           <span>{objFromMoneyArr.banknots}</span>
-           <span>{objFromMoneyArr.value}</span>
-           <span>{objFromMoneyArr.number}</span>
-         </li>
-        
-       )
-     })}
-  </ul>
-
-        <div style={{ marginLeft: '35px' }}>
-       
-       <button onClick={()=>onClickFilterHandler('All')}>All</button>
-       <button onClick={()=>onClickFilterHandler('Rubls')}>Rubles</button>
-       <button onClick={()=>onClickFilterHandler('Dollars')}>Dolar</button>
-        </div>
-
-      </>
+   
+      <NewComponents/>
 
     );
 }
