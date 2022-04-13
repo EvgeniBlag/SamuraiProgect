@@ -4,47 +4,40 @@ import Profile from './components/Profile/Profile';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import React,{useState} from 'react';
-import NewComponents from './NewComponents';
-
-
-type FilterPropsType='All'|'Dollars'|'Rubls'
+import MyInput from './MyInput';
 
 
 function App(){
-  const [money, setMoney] = useState([
-    { banknots: 'Dollars', value: 100, number: ' a1234567890' },
-    { banknots: 'Dollars', value: 50, number: ' z1234567890' },
-    { banknots: 'Rubls', value: 100, number: ' w1234567890' },
-    { banknots: 'Dollars', value: 100, number: ' e1234567890' },
-    { banknots: 'Dollars', value: 50, number: ' c1234567890' },
-    { banknots: 'Rubls', value: 100, number: ' r1234567890' },
-    { banknots: 'Dollars', value: 50, number: ' x1234567890' },
-    { banknots: 'Rubls', value: 50, number: ' v1234567890' },
-  ])  
 
+  let [message,setMessage]=useState([
+    {message:'message1'},
+    {message:'message2'},
+    {message:'message3'}
+  ])
 
-  const [filter, setFilter]=useState <FilterPropsType> ('All')
+  const addMessage = (title:string) =>{
 
- let currentMoney = money;
- 
-  if (filter ==='Dollars'){
-    currentMoney = money.filter(filteredMoney => filteredMoney.banknots ==='Dollars')  
+let newMessage = {message:title};
+    setMessage([newMessage,...message])
+
   }
-
-  if (filter ==='Rubls'){
-    currentMoney = money.filter(filteredMoney => filteredMoney.banknots ==='Rubls')  
-  }
-
-  const onClickFilterHandler =(nameButton:FilterPropsType)=>{
-    
-    return(
-      setFilter(nameButton)
-    )
-  }
- 
+  
     return (
-   
-      <NewComponents/>
+   <div className={'App'}>
+
+  <MyInput addMessage={addMessage}/>
+  
+
+        {message.map((el, index) => {
+          return (
+            <div key={index}>
+              {el.message}
+            </div>
+          )
+        })}
+
+   </div>
+
 
     );
 }
