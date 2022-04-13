@@ -4,7 +4,8 @@ import Profile from './components/Profile/Profile';
 import Header from './components/Header/Header';
 import Navbar from './components/Navbar/Navbar';
 import React,{useState} from 'react';
-import MyInput from './MyInput';
+import { Input } from './Input';
+import { Button } from './Button';
 
 
 function App(){
@@ -15,18 +16,32 @@ function App(){
     {message:'message3'}
   ])
 
+
+  const[title,setTitle]=useState('')
+
   const addMessage = (title:string) =>{
 
-let newMessage = {message:title};
-    setMessage([newMessage,...message])
-
+    let newMessage = {message:title};
+       setMessage([newMessage,...message])
   }
+  
+    const Handler =()=>{
+    return(
+      addMessage(title),
+      setTitle('')
+    )
+    }
+
+
+  
   
     return (
    <div className={'App'}>
 
-  <MyInput addMessage={addMessage}/>
-  
+  {/* <MyInput addMessage={addMessage}/> */}
+
+   <Input title={title} setTitle={setTitle}/>
+   <Button name={'Add'} callBack={Handler}/>
 
         {message.map((el, index) => {
           return (
